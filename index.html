@@ -601,7 +601,7 @@ th.format-col:hover .col-actions .icon-btn {
 </div>
 
 <script>
-const STORAGE_KEY = 'agios_theodoros_plan_v6';
+const STORAGE_KEY = 'agios_theodoros_plan_v7';
 
 const defaultColumns = [
   { id: 'couples', label: 'Couples weekend' },
@@ -633,7 +633,7 @@ const defaultRows = [
   r('Sights & Landmarks', 'Venetian (Hadjiatou) Watermill', 'Ancient monument; folkloric history', { couples:0, nature:1, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
   r('Sights & Landmarks', 'Alakati / Millstone', 'Old grinding stone \u2014 heritage detail shot', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
   r('Sights & Landmarks', 'Olive Park (open-air reading)', 'Under olive trees', { couples:1, nature:1, families:0, foodies:0, wellness:2, culture:1, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }, 'Reading a book, journaling, napping in the shade', 'Books, journal, pen, blanket, straw hat'),
-  r('Local Life', 'Stegi Grammaton tou Neou', 'Literary House of the Young', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
+  r('Miscellaneous', 'Stegi Grammaton tou Neou', 'Literary House of the Young', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
   r('Sights & Landmarks', 'The Village Farm (Agroktima)', 'Working farm with animals and produce', { couples:0, nature:1, families:2, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }, 'Kids feeding animals, collecting eggs, picking produce', 'Small bucket for eggs, kid-sized wellies'),
 
   // ── Photo Spots ──
@@ -690,10 +690,10 @@ const defaultRows = [
   r('Accommodation', 'Mountain Retreat Rooms &amp; Suites', 'Elevated village setting', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:1, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
 
   // ── Local Life ──
-  r('Local Life', 'The Grocery Store', 'Village mini-market', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:1 }, '', '', 'Why did you leave the city?'),
-  r('Local Life', 'The Barber', 'Traditional village barber', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:1 }, '', '', 'Why did you leave the city?'),
-  r('Local Life', 'The Butcher', 'Local butcher shop', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:1, family_recipes:0, boat_plate:0, left_city:1 }, '', '', 'Why did you leave the city?'),
-  r('Local Life', 'The Gym', 'Village gym', { couples:0, nature:0, families:0, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
+  r('Miscellaneous', 'The Grocery Store', 'Village mini-market', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:1 }, '', '', 'Why did you leave the city?'),
+  r('Miscellaneous', 'The Barber', 'Traditional village barber', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:1 }, '', '', 'Why did you leave the city?'),
+  r('Miscellaneous', 'The Butcher', 'Local butcher shop', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:1, family_recipes:0, boat_plate:0, left_city:1 }, '', '', 'Why did you leave the city?'),
+  r('Miscellaneous', 'The Gym', 'Village gym', { couples:0, nature:0, families:0, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
 
   // ── Miscellaneous ──
   r('Miscellaneous', 'E-bikes', 'Community e-bike service', { couples:0, nature:1, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:1, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }, 'Riding through village streets, stopping at viewpoints, exploring the coast path', 'Helmet, sunglasses, small backpack'),
@@ -701,8 +701,8 @@ const defaultRows = [
   r('Miscellaneous', 'Interactive Screen', 'Digital visitor information point', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:1, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
   r('Miscellaneous', 'Stone houses &amp; wooden balconies', 'Picturesque alleys; limestone facades', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
   r('Miscellaneous', 'Heroes Monument', 'At entrance of Community Hall', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
-  r('Local Life', 'Community Amphitheatre', 'Open-air; hosts the annual festival', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
-  r('Local Life', 'Community Football Stadium', 'Local matches, weekend community life', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }, '', 'Football'),
+  r('Miscellaneous', 'Community Amphitheatre', 'Open-air; hosts the annual festival', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
+  r('Miscellaneous', 'Community Football Stadium', 'Local matches, weekend community life', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }, '', 'Football'),
 
   // ── Not in Agios Theodoros ──
   r('Not in Agios Theodoros', 'McDonald\'s', 'For ice cream', { couples:0, nature:0, families:2, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0, souvla:0, family_recipes:0, boat_plate:0, left_city:0 }),
