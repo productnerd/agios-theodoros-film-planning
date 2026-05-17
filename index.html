@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agios Theodoros Filming Matrix</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --cream: #f3e9d7;
+  --cream-deep: #e7dcc3;
+  --paper: #faf5ea;
+  --paper-hover: #fdf9ef;
+  --espresso: #2a1810;
+  --espresso-soft: #5a4533;
+  --terracotta: #c66a3a;
+  --terracotta-soft: #e0a17b;
+  --olive: #6b7c4a;
+  --line: #cdbfa3;
+  --line-soft: #e6dcc6;
+  --shadow: 0 1px 3px rgba(42, 24, 16, 0.06), 0 2px 8px rgba(42, 24, 16, 0.04);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--cream);
+  color: var(--espresso);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  padding: 36px 28px 80px;
+}
+
+header {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.kicker {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracotta);
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+h1 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  font-size: 44px;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+  line-height: 1.05;
+}
+
+h1 em {
+  font-style: italic;
+  color: var(--terracotta);
+  font-weight: 400;
+}
+
+.lede {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--espresso-soft);
+  line-height: 1.55;
+  margin: 0 0 22px;
+  max-width: 660px;
+}
+
+.legend {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 12.5px;
+  color: var(--espresso-soft);
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mark-glyph {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.mark-glyph.feat {
+  background: var(--terracotta);
+  color: var(--paper);
+}
+
+.mark-glyph.cameo {
+  background: var(--cream-deep);
+  color: var(--espresso);
+  border: 1px solid var(--line);
+}
+
+.mark-glyph.skip {
+  background: transparent;
+  color: var(--line);
+  border: 1px dashed var(--line);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  margin-bottom: 18px;
+  box-shadow: var(--shadow);
+}
+
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--espresso);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: var(--cream-deep);
+  border-color: var(--espresso-soft);
+}
+
+.btn-primary {
+  background: var(--espresso);
+  color: var(--paper);
+  border-color: var(--espresso);
+}
+
+.btn-primary:hover {
+  background: var(--espresso-soft);
+  border-color: var(--espresso-soft);
+}
+
+.btn-ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--espresso-soft);
+}
+
+.btn-ghost:hover {
+  background: var(--cream-deep);
+  color: var(--espresso);
+}
+
+.status {
+  margin-left: auto;
+  font-size: 12.5px;
+  color: var(--olive);
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  padding-right: 4px;
+}
+
+.table-wrap {
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  overflow: auto;
+  max-height: 72vh;
+  box-shadow: var(--shadow);
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background: var(--cream-deep);
+  color: var(--espresso);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: bottom;
+  z-index: 5;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--espresso-soft);
+}
+
+thead th.format-col {
+  text-align: center;
+  min-width: 92px;
+  max-width: 110px;
+  white-space: normal;
+  line-height: 1.25;
+}
+
+thead th.format-col .col-label {
+  display: block;
+  margin-bottom: 5px;
+  outline: none;
+  border-radius: 3px;
+  padding: 2px 4px;
+  cursor: text;
+}
+
+thead th.format-col .col-label:focus {
+  background: #fff8e6;
+  box-shadow: inset 0 0 0 1px var(--terracotta);
+}
+
+th.format-col .col-count {
+  display: block;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 11px;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--terracotta);
+}
+
+th.row-num-col {
+  width: 38px;
+  min-width: 38px;
+  max-width: 38px;
+  text-align: center;
+  position: sticky;
+  left: 0;
+  z-index: 6;
+}
+
+th.location-col {
+  position: sticky;
+  left: 38px;
+  z-index: 6;
+  min-width: 230px;
+  background: var(--cream-deep);
+}
+
+th.notes-col {
+  min-width: 200px;
+  max-width: 260px;
+}
+
+th.actions-col {
+  width: 36px;
+}
+
+tbody tr.cat-row td {
+  background: var(--cream);
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--terracotta);
+  padding: 14px 12px 6px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line-soft);
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+
+tbody td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: middle;
+  background: var(--paper);
+}
+
+tbody tr:hover td {
+  background: var(--paper-hover);
+}
+
+td.row-num {
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  color: var(--espresso-soft);
+  font-size: 12px;
+  width: 38px;
+  min-width: 38px;
+  max-width: 38px;
+  text-align: center;
+  position: sticky;
+  left: 0;
+  z-index: 3;
+  background: var(--cream-deep);
+}
+
+tbody tr:hover td.row-num {
+  background: var(--cream-deep);
+}
+
+td.location-cell {
+  position: sticky;
+  left: 38px;
+  z-index: 2;
+  min-width: 230px;
+  background: var(--paper);
+  border-right: 1px solid var(--line-soft);
+}
+
+tbody tr:hover td.location-cell {
+  background: var(--paper-hover);
+}
+
+.cell-edit {
+  outline: none;
+  border-radius: 4px;
+  padding: 4px 6px;
+  cursor: text;
+}
+
+.cell-edit:focus {
+  background: #fff8e6;
+  box-shadow: inset 0 0 0 1px var(--terracotta);
+}
+
+td.location-cell .cell-edit {
+  font-weight: 500;
+  font-size: 13.5px;
+  font-family: 'Fraunces', Georgia, serif;
+  color: var(--espresso);
+}
+
+td.notes {
+  font-size: 12px;
+  color: var(--espresso-soft);
+  font-style: italic;
+  font-family: 'Fraunces', Georgia, serif;
+  min-width: 200px;
+  max-width: 260px;
+}
+
+td.notes .cell-edit {
+  font-size: 12.5px;
+  line-height: 1.4;
+  min-height: 22px;
+}
+
+td.mark-cell {
+  text-align: center;
+  padding: 6px;
+}
+
+.mark-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px dashed transparent;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--line);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s ease;
+}
+
+.mark-btn:hover {
+  border-color: var(--line);
+  background: rgba(198, 106, 58, 0.06);
+}
+
+.mark-btn[data-mark="1"] {
+  background: var(--cream-deep);
+  color: var(--espresso);
+  border: 1px solid var(--line);
+  border-style: solid;
+}
+
+.mark-btn[data-mark="2"] {
+  background: var(--terracotta);
+  color: var(--paper);
+  border: 1px solid var(--terracotta);
+}
+
+td.actions-cell {
+  width: 36px;
+  text-align: center;
+  padding: 4px;
+}
+
+.icon-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--espresso-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.15s ease;
+  font-size: 16px;
+  line-height: 1;
+}
+
+tr:hover .icon-btn {
+  opacity: 1;
+}
+
+.icon-btn:hover {
+  background: var(--cream-deep);
+  color: var(--terracotta);
+}
+
+th .col-actions {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  margin-top: 2px;
+}
+
+th .col-actions .icon-btn {
+  opacity: 0;
+}
+
+th.format-col:hover .col-actions .icon-btn {
+  opacity: 0.8;
+}
+
+.dialog-bg {
+  position: fixed;
+  inset: 0;
+  background: rgba(42, 24, 16, 0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  backdrop-filter: blur(2px);
+}
+
+.dialog-bg.open {
+  display: flex;
+}
+
+.dialog {
+  background: var(--paper);
+  border-radius: 12px;
+  padding: 28px;
+  width: 90%;
+  max-width: 460px;
+  box-shadow: 0 12px 40px rgba(42, 24, 16, 0.3);
+  font-family: 'Inter', sans-serif;
+}
+
+.dialog h2 {
+  font-family: 'Fraunces', Georgia, serif;
+  font-weight: 500;
+  font-size: 24px;
+  margin: 0 0 18px;
+  letter-spacing: -0.01em;
+}
+
+.dialog label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--espresso-soft);
+  margin-bottom: 6px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.dialog input, .dialog select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  background: var(--cream);
+  margin-bottom: 14px;
+  color: var(--espresso);
+  outline: none;
+}
+
+.dialog input:focus, .dialog select:focus {
+  border-color: var(--terracotta);
+  background: #fff8e6;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin-top: 14px;
+}
+
+.footer-note {
+  margin-top: 22px;
+  padding: 14px 18px;
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-style: italic;
+  font-size: 13.5px;
+  color: var(--espresso-soft);
+  line-height: 1.55;
+}
+
+.footer-note strong {
+  font-weight: 600;
+  font-style: normal;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--terracotta);
+  display: block;
+  margin-bottom: 6px;
+}
+
+@media (max-width: 720px) {
+  .page { padding: 24px 16px 60px; }
+  h1 { font-size: 32px; }
+  .lede { font-size: 15px; }
+  .legend { gap: 14px; font-size: 11.5px; }
+  .toolbar { padding: 10px; }
+  .btn { font-size: 12px; padding: 7px 11px; }
+  .status { width: 100%; margin-left: 0; text-align: right; order: 99; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header>
+    <p class="kicker">Kaimakki Studio &middot; Production Planning</p>
+    <h1>Agios Theodoros &middot; <em>Filming Matrix</em></h1>
+    <p class="lede">Every location featured on agiostheodoros.org, mapped against nine planned video formats. Tap any cell to cycle through <strong>&starf; feature</strong>, <strong>&bullet; cameo</strong>, or blank. Click names, notes, or column titles to edit. Your changes save automatically and survive between sessions.</p>
+    <div class="legend">
+      <span class="legend-item"><span class="mark-glyph feat">&starf;</span> Feature &mdash; must shoot</span>
+      <span class="legend-item"><span class="mark-glyph cameo">&bullet;</span> Cameo &mdash; supporting b-roll</span>
+      <span class="legend-item"><span class="mark-glyph skip">&middot;</span> Skip</span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button class="btn btn-primary" id="add-row">+ Location</button>
+    <button class="btn" id="add-col">+ Video format</button>
+    <button class="btn" id="export-csv">Export CSV</button>
+    <button class="btn btn-ghost" id="reset">Reset to default</button>
+    <span class="status" id="status">All changes saved</span>
+  </div>
+
+  <div class="table-wrap">
+    <table id="matrix"></table>
+  </div>
+
+  <div class="footer-note">
+    <strong>Note from Kaimakki planning</strong>
+    &ldquo;Stephani&rdquo; viewpoint and the &ldquo;Heart&rdquo; on the beach are the village&rsquo;s signature shots &mdash; both featured on every persona itinerary and the postcard montage. Akakia &amp; Maia beaches anchor the coast story. The fish taverns (Mamas, Pentaschoinos Seafood Experience, Limni) are the pivot for the &ldquo;Instead of Zygi&rdquo; hook. Olive Mill, Andreas Evripides gallery, and Panagia Astathkiotissa carry the heritage thread. Sunrise on the gorge trail, citrus golden hour at the Orchard, and last light at the Heart are the three time-of-day priorities to schedule around.
+  </div>
+</div>
+
+<div class="dialog-bg" id="dialog-bg">
+  <div class="dialog" id="dialog"></div>
+</div>
+
+<script>
+const STORAGE_KEY = 'agios_theodoros_plan_v1';
+
+const defaultColumns = [
+  { id: 'couples', label: 'Couples weekend' },
+  { id: 'nature', label: 'Nature lovers' },
+  { id: 'families', label: 'Families' },
+  { id: 'foodies', label: 'Foodies' },
+  { id: 'wellness', label: 'Slow / wellness' },
+  { id: 'culture', label: 'Culture & history' },
+  { id: 'eat3', label: '3 places to eat' },
+  { id: 'vs_zygi', label: 'Instead of Zygi' },
+  { id: 'postcards', label: 'Postcards (aesthetic)' }
+];
+
+const r = (category, name, notes, marks) => ({
+  id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+  category, name, notes, marks
+});
+
+const defaultRows = [
+  r('Sights & Landmarks', 'Traditional Olive Mill', 'Restored, listed building; stone presses, golden interior light — heritage hero shot', { couples:1, nature:0, families:1, foodies:2, wellness:0, culture:2, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Sights & Landmarks', 'Andreas Evripides Art Gallery', 'Artworks of community member missing since 1974 — emotional cultural anchor', { couples:0, nature:0, families:0, foodies:0, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Sights & Landmarks', 'The Village Orchard (To Perivoli)', 'Citrus excursion area; free fruit hospitality from the Council — golden-hour b-roll gold', { couples:1, nature:2, families:2, foodies:2, wellness:2, culture:1, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Sights & Landmarks', 'To Vrytzii Nature Trail', '850m linear trail through gorges &amp; caves; Natura 2000; Green Flag 2019', { couples:1, nature:2, families:1, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Sights & Landmarks', 'Venetian (Hadjiatou) Watermill', 'Ancient monument; folkloric history — texture &amp; stone shots', { couples:0, nature:1, families:1, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Sights & Landmarks', 'Alakati / Millstone', 'Old grinding stone — heritage detail shot', { couples:0, nature:0, families:0, foodies:1, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Sights & Landmarks', 'Pentaschinos River &amp; gorge', 'Runs through village to sea; citrus valleys flanking', { couples:1, nature:2, families:1, foodies:0, wellness:1, culture:1, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Sights & Landmarks', 'Stone houses &amp; wooden balconies', 'Picturesque alleys; limestone facades — village character', { couples:1, nature:0, families:1, foodies:0, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Sights & Landmarks', 'Heroes Monument', 'At entrance of Community Hall — historical anchor', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:0 }),
+  r('Sights & Landmarks', 'Olive Park (open-air reading)', 'Reading park under olive trees — meditative slow-travel scene', { couples:1, nature:1, families:1, foodies:0, wellness:2, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Sights & Landmarks', 'Stegi Grammaton tou Neou', 'Literary House of the Young', { couples:0, nature:0, families:1, foodies:0, wellness:1, culture:1, eat3:0, vs_zygi:0, postcards:0 }),
+  r('Sights & Landmarks', 'The Village Farm (Agroktima)', 'Working farm — animals, produce; kid magnet', { couples:0, nature:1, families:2, foodies:1, wellness:1, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Sights & Landmarks', 'Community Amphitheatre', 'Open-air; hosts the annual festival', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Sights & Landmarks', 'Community Football Stadium', 'Local matches, weekend community life', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0 }),
+
+  r('Photo Spots', '"Stephani" window-bench viewpoint', 'Iconic frame — sunrise &amp; sunset gold; village signature shot', { couples:2, nature:1, families:1, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:2, postcards:2 }),
+  r('Photo Spots', '"Heart" on the beach', 'Famous heart sculpture, sea backdrop — most recognisable image', { couples:2, nature:0, families:2, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:2, postcards:2 }),
+  r('Photo Spots', 'View Point Frame', 'Wooden picture-frame installation', { couples:1, nature:1, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
+
+  r('Beaches & Coast', 'Akakia Beach', 'Organised; gold sand; calm shallow water — sunbed &amp; cocktail shots', { couples:2, nature:1, families:2, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Beaches & Coast', 'Maia Beach', 'Organised; sheltered swim; family-favorite stretch', { couples:2, nature:1, families:2, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Beaches & Coast', '8.5km coastline (rocky stretches)', 'Wild, less-built coastal sections — drone material', { couples:1, nature:2, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
+
+  r('Religious & Heritage', 'Church of Agios Theodoros', 'Main village church, tall dome; centerpiece of the square', { couples:1, nature:0, families:1, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Religious & Heritage', 'Agios Athanasios Pentaschoinitis (ruins)', 'Byzantine-style ruined chapel; tomb discovered 2004', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Religious & Heritage', 'Agioi Anargyroi chapel', 'Built 1919', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Religious & Heritage', 'Panagia Astathkiotissa (15th c.)', '1.5km east on small hill; 16th-c frescoes — landscape + interior gem', { couples:2, nature:1, families:0, foodies:0, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Religious & Heritage', 'Holy Three Children &amp; Prophet Daniel chapel', 'Small chapel', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Religious & Heritage', 'Mosaic of Agios Theodoros', 'Council-commissioned mosaic — graphic detail shot', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Religious & Heritage', 'Turkish Cypriot Mosque', 'Heritage of the mixed-village past — important context', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Religious & Heritage', 'Agios Gerasimos', 'Smaller chapel', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
+
+  r('Sports & Activities', 'Cycling routes', 'Marked village &amp; coastal routes — movement b-roll', { couples:1, nature:2, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:1 }),
+  r('Sports & Activities', 'Sea fishing', 'Local fishermen supply the taverns — "boat to plate" hook', { couples:0, nature:1, families:1, foodies:1, wellness:0, culture:1, eat3:0, vs_zygi:2, postcards:1 }),
+  r('Sports & Activities', 'Yoga', 'Beach &amp; nature sessions', { couples:1, nature:1, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Sports & Activities', 'Canoe / Kayak lessons', 'Coast and river — action + scenic combo', { couples:2, nature:2, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Sports & Activities', 'Motor sport', 'Track / off-road area', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0 }),
+
+  r('Dining', 'Mamas Fish Tavern', '#1 rated in village; fresh catch, traditional setting', { couples:2, nature:0, families:1, foodies:2, wellness:0, culture:0, eat3:2, vs_zygi:2, postcards:1 }),
+  r('Dining', 'Pentaschoinos Seafood Experience', 'Modern fish tavern, sea view', { couples:2, nature:0, families:1, foodies:2, wellness:0, culture:0, eat3:2, vs_zygi:2, postcards:1 }),
+  r('Dining', 'Limni Fish Tavern', 'Fish tavern alongside the others', { couples:1, nature:0, families:1, foodies:2, wellness:0, culture:0, eat3:1, vs_zygi:2, postcards:1 }),
+  r('Dining', 'Mezedofolia Tavern', 'Traditional meze, village setting — meze montage candidate', { couples:1, nature:0, families:2, foodies:2, wellness:0, culture:1, eat3:2, vs_zygi:0, postcards:1 }),
+  r('Dining', '"I Kali Eftychia" Tavern', 'Family-friendly traditional', { couples:1, nature:0, families:2, foodies:2, wellness:0, culture:1, eat3:1, vs_zygi:0, postcards:1 }),
+  r('Dining', '"O Paliomouchtaros" Tavern', 'Traditional tavern, village atmosphere', { couples:1, nature:0, families:1, foodies:2, wellness:0, culture:1, eat3:1, vs_zygi:0, postcards:1 }),
+  r('Dining', '"To Vasano" Tavern', 'Village tavern', { couples:1, nature:0, families:1, foodies:2, wellness:0, culture:1, eat3:1, vs_zygi:0, postcards:1 }),
+  r('Dining', 'Akakia Beach Bar', 'On-beach cocktails &amp; food; terraced setting', { couples:2, nature:0, families:1, foodies:1, wellness:1, culture:0, eat3:1, vs_zygi:1, postcards:2 }),
+  r('Dining', 'Maia Beach Bar', 'Family-run on-beach bar — burgers, beer, hospitality', { couples:1, nature:0, families:2, foodies:1, wellness:1, culture:0, eat3:1, vs_zygi:1, postcards:1 }),
+
+  r('Accommodation', 'For Rest Glamping', 'Hilltop 360° viewpoint; serene; sunrise coffee scene', { couples:2, nature:2, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Accommodation', 'Cyprus Glamping Park', 'Olive-grove cabins; family-friendly gates', { couples:1, nature:2, families:2, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Accommodation', 'Geometry (themed glamping)', 'Marketed as first themed glamping in Cyprus — distinctive design (verify claim before posting)', { couples:2, nature:1, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Accommodation', 'Happy Glamping Cy', 'Glamping concept', { couples:2, nature:1, families:1, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Accommodation', 'Konatzi tou Flokka', 'Traditional house — heritage stay', { couples:1, nature:0, families:1, foodies:1, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Accommodation', 'Elya Beach Luxury Suites', 'Coast-side luxury — wake up to sea', { couples:2, nature:0, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Accommodation', 'Kamaroporta Luxury Apartments', 'Premium village apartments', { couples:2, nature:0, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Accommodation', 'Pentasino Traditional House', 'Heritage stone house', { couples:1, nature:0, families:1, foodies:1, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Accommodation', 'Eleonas Seaview Cottages', 'Olive-grove cottages with sea view', { couples:2, nature:1, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Accommodation', '"KAMPOS" tourist apartments', 'Tourist apartments', { couples:1, nature:1, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Accommodation', 'Mountain Retreat Rooms &amp; Suites', 'Elevated village setting', { couples:2, nature:1, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
+
+  r('Cultural & Community', 'WARL workshops (Women\'s Assoc.)', 'Heartlands of Legends experiential workshops; listed building', { couples:0, nature:0, families:1, foodies:1, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Cultural & Community', '"Pentaschoinos" Folklore Group', 'Local folklore society; dance &amp; costume', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:0 }),
+  r('Cultural & Community', 'Annual Art &amp; Culture Festival', 'Summer festival at the amphitheatre', { couples:1, nature:0, families:2, foodies:1, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+];
+
+let state = { rows: cloneRows(defaultRows), columns: defaultColumns.map(c => ({...c})) };
+
+function cloneRows(arr) {
+  return arr.map(r => ({...r, marks: {...r.marks}}));
+}
+
+function load() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (parsed.rows && parsed.columns) state = parsed;
+    }
+  } catch (e) {}
+  render();
+}
+
+let saveTimer = null;
+function scheduleSave() {
+  const status = document.getElementById('status');
+  status.textContent = 'Saving…';
+  status.style.color = 'var(--terracotta)';
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      status.textContent = 'All changes saved';
+      status.style.color = 'var(--olive)';
+    } catch (e) {
+      status.textContent = 'Save failed — copy CSV';
+      status.style.color = 'var(--terracotta)';
+    }
+  }, 350);
+}
+
+function markGlyph(v) {
+  return v === 2 ? '★' : v === 1 ? '●' : '·';
+}
+
+function render() {
+  const table = document.getElementById('matrix');
+
+  const thHead = `
+    <thead>
+      <tr>
+        <th class="row-num-col">#</th>
+        <th class="location-col">Location</th>
+        ${state.columns.map((c, i) => `
+          <th class="format-col" data-col-idx="${i}">
+            <span class="col-label" contenteditable="true" data-col="${i}">${c.label}</span>
+            <span class="col-count" id="count-${c.id}"></span>
+            <div class="col-actions">
+              <button class="icon-btn" data-action="remove-col" data-idx="${i}" title="Remove this column">×</button>
+            </div>
+          </th>`).join('')}
+        <th class="notes-col">Notes</th>
+        <th class="actions-col"></th>
+      </tr>
+    </thead>`;
+
+  const grouped = {};
+  state.rows.forEach((row, idx) => {
+    if (!grouped[row.category]) grouped[row.category] = [];
+    grouped[row.category].push({row, idx});
+  });
+
+  const totalCols = state.columns.length + 4;
+  let bodyHtml = '<tbody>';
+  let visibleNum = 0;
+  Object.keys(grouped).forEach(cat => {
+    bodyHtml += `<tr class="cat-row"><td colspan="${totalCols}">${escapeHtml(cat)}</td></tr>`;
+    grouped[cat].forEach(({row, idx}) => {
+      visibleNum++;
+      bodyHtml += `
+        <tr data-row-idx="${idx}">
+          <td class="row-num">${visibleNum}</td>
+          <td class="location-cell">
+            <div class="cell-edit" contenteditable="true" data-field="name" data-idx="${idx}">${row.name}</div>
+          </td>
+          ${state.columns.map(c => `
+            <td class="mark-cell">
+              <button class="mark-btn" data-mark="${row.marks[c.id] || 0}" data-idx="${idx}" data-col="${c.id}" aria-label="Toggle mark">${markGlyph(row.marks[c.id] || 0)}</button>
+            </td>`).join('')}
+          <td class="notes">
+            <div class="cell-edit" contenteditable="true" data-field="notes" data-idx="${idx}">${row.notes || ''}</div>
+          </td>
+          <td class="actions-cell">
+            <button class="icon-btn" data-action="remove-row" data-idx="${idx}" title="Remove this location">×</button>
+          </td>
+        </tr>`;
+    });
+  });
+  bodyHtml += '</tbody>';
+
+  table.innerHTML = thHead + bodyHtml;
+
+  table.querySelectorAll('.mark-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = parseInt(btn.dataset.idx);
+      const col = btn.dataset.col;
+      const current = state.rows[idx].marks[col] || 0;
+      const next = (current + 1) % 3;
+      state.rows[idx].marks[col] = next;
+      btn.dataset.mark = next;
+      btn.textContent = markGlyph(next);
+      updateCounts();
+      scheduleSave();
+    });
+  });
+
+  table.querySelectorAll('.cell-edit').forEach(el => {
+    el.addEventListener('input', () => {
+      const field = el.dataset.field;
+      const col = el.dataset.col;
+      if (field) {
+        const idx = parseInt(el.dataset.idx);
+        state.rows[idx][field] = el.textContent;
+      } else if (col !== undefined) {
+        state.columns[parseInt(col)].label = el.textContent;
+      }
+      scheduleSave();
+    });
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        el.blur();
+      }
+    });
+  });
+
+  table.querySelectorAll('[data-action="remove-row"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.dataset.idx);
+      if (!confirm(`Remove "${state.rows[idx].name}" from the matrix?`)) return;
+      state.rows.splice(idx, 1);
+      render();
+      scheduleSave();
+    });
+  });
+
+  table.querySelectorAll('[data-action="remove-col"]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const idx = parseInt(btn.dataset.idx);
+      if (!confirm(`Remove the "${state.columns[idx].label}" format from the matrix?`)) return;
+      state.columns.splice(idx, 1);
+      render();
+      scheduleSave();
+    });
+  });
+
+  updateCounts();
+}
+
+function escapeHtml(s) {
+  const div = document.createElement('div');
+  div.textContent = s;
+  return div.innerHTML;
+}
+
+function updateCounts() {
+  state.columns.forEach(c => {
+    const el = document.getElementById(`count-${c.id}`);
+    if (!el) return;
+    const feats = state.rows.filter(r => r.marks[c.id] === 2).length;
+    const cameos = state.rows.filter(r => r.marks[c.id] === 1).length;
+    el.textContent = `${feats}★ · ${cameos}●`;
+  });
+}
+
+document.getElementById('add-row').addEventListener('click', () => {
+  const cats = [...new Set(state.rows.map(r => r.category))];
+  const dialogBg = document.getElementById('dialog-bg');
+  const dialog = document.getElementById('dialog');
+  dialog.innerHTML = `
+    <h2>Add location</h2>
+    <label>Name</label>
+    <input type="text" id="new-name" placeholder="e.g. Pentaschinos river bridge">
+    <label>Category</label>
+    <select id="new-category">
+      ${cats.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('')}
+      <option value="__new__">+ New category…</option>
+    </select>
+    <label>Notes (optional)</label>
+    <input type="text" id="new-notes" placeholder="Visual angle, best time, fact to feature">
+    <div class="dialog-actions">
+      <button class="btn btn-ghost" id="cancel-add">Cancel</button>
+      <button class="btn btn-primary" id="confirm-add">Add location</button>
+    </div>
+  `;
+  dialogBg.classList.add('open');
+  setTimeout(() => document.getElementById('new-name').focus(), 50);
+
+  document.getElementById('new-category').addEventListener('change', (e) => {
+    if (e.target.value === '__new__') {
+      const newCat = prompt('New category name:');
+      if (newCat && newCat.trim()) {
+        const opt = document.createElement('option');
+        opt.value = newCat.trim();
+        opt.textContent = newCat.trim();
+        opt.selected = true;
+        e.target.insertBefore(opt, e.target.querySelector('option[value="__new__"]'));
+      } else {
+        e.target.value = cats[0] || '';
+      }
+    }
+  });
+
+  document.getElementById('cancel-add').addEventListener('click', closeDialog);
+  document.getElementById('confirm-add').addEventListener('click', () => {
+    const name = document.getElementById('new-name').value.trim();
+    if (!name) { document.getElementById('new-name').focus(); return; }
+    const category = document.getElementById('new-category').value;
+    const notes = document.getElementById('new-notes').value.trim();
+    const marks = {};
+    state.columns.forEach(c => marks[c.id] = 0);
+    state.rows.push({
+      id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-' + Date.now().toString(36),
+      category, name, notes, marks
+    });
+    closeDialog();
+    render();
+    scheduleSave();
+  });
+});
+
+document.getElementById('add-col').addEventListener('click', () => {
+  const dialogBg = document.getElementById('dialog-bg');
+  const dialog = document.getElementById('dialog');
+  dialog.innerHTML = `
+    <h2>Add video format</h2>
+    <label>Format name</label>
+    <input type="text" id="new-col-name" placeholder="e.g. Reels for first-time visitors">
+    <div class="dialog-actions">
+      <button class="btn btn-ghost" id="cancel-add-col">Cancel</button>
+      <button class="btn btn-primary" id="confirm-add-col">Add format</button>
+    </div>
+  `;
+  dialogBg.classList.add('open');
+  setTimeout(() => document.getElementById('new-col-name').focus(), 50);
+
+  document.getElementById('cancel-add-col').addEventListener('click', closeDialog);
+  document.getElementById('confirm-add-col').addEventListener('click', () => {
+    const label = document.getElementById('new-col-name').value.trim();
+    if (!label) { document.getElementById('new-col-name').focus(); return; }
+    const id = 'col_' + Date.now().toString(36);
+    state.columns.push({ id, label });
+    state.rows.forEach(r => r.marks[id] = 0);
+    closeDialog();
+    render();
+    scheduleSave();
+  });
+});
+
+function closeDialog() {
+  document.getElementById('dialog-bg').classList.remove('open');
+}
+
+document.getElementById('dialog-bg').addEventListener('click', (e) => {
+  if (e.target.id === 'dialog-bg') closeDialog();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeDialog();
+});
+
+document.getElementById('export-csv').addEventListener('click', () => {
+  const headerRow = ['Category', 'Location', ...state.columns.map(c => c.label), 'Notes'];
+  const rows = [headerRow];
+  state.rows.forEach(r => {
+    rows.push([
+      r.category,
+      r.name,
+      ...state.columns.map(c => {
+        const v = r.marks[c.id] || 0;
+        return v === 2 ? 'FEATURE' : v === 1 ? 'cameo' : '';
+      }),
+      r.notes || ''
+    ]);
+  });
+  const csv = rows.map(row => row.map(cell => {
+    const s = String(cell).replace(/&amp;/g, '&').replace(/<[^>]+>/g, '');
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  }).join(',')).join('\n');
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'agios-theodoros-filming-matrix.csv';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  URL.revokeObjectURL(url);
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  if (!confirm('Reset to Kaimakki default suggestions? Your edits will be lost.')) return;
+  state = { rows: cloneRows(defaultRows), columns: defaultColumns.map(c => ({...c})) };
+  render();
+  scheduleSave();
+});
+
+load();
+</script>
+</body>
+</html>
