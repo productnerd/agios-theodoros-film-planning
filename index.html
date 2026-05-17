@@ -358,6 +358,15 @@ td.location-cell .cell-edit {
   color: var(--espresso);
 }
 
+td.location-cell .loc-notes {
+  font-weight: 400;
+  font-size: 11px;
+  font-family: 'Inter', sans-serif;
+  color: var(--espresso-soft);
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
 td.notes {
   font-size: 12px;
   color: var(--espresso-soft);
@@ -617,78 +626,78 @@ const defaultColumns = [
   { id: 'glamping', label: 'Glamping heaven' }
 ];
 
-const r = (category, name, notes, marks) => ({
+const r = (category, name, notes, marks, activity, props) => ({
   id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-  category, name, notes, marks
+  category, name, notes, marks, activity: activity || '', props: props || ''
 });
 
 const defaultRows = [
-  r('Sights & Landmarks', 'Traditional Olive Mill', 'Restored, listed building; stone presses, golden interior light — show: guided tour, touching the presses, tasting olive oil', { couples:1, nature:0, families:1, foodies:2, wellness:0, culture:2, eat3:0, vs_zygi:1, postcards:2 }),
-  r('Sights & Landmarks', 'Andreas Evripides Art Gallery', 'Artworks of community member missing since 1974 — emotional cultural anchor', { couples:0, nature:0, families:0, foodies:0, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
-  r('Sights & Landmarks', 'The Village Orchard (To Perivoli)', 'Citrus excursion area; free fruit from the Council — show: picking oranges, peeling and tasting under the trees', { couples:1, nature:2, families:2, foodies:2, wellness:2, culture:1, eat3:0, vs_zygi:1, postcards:2 }),
-  r('Sights & Landmarks', 'Venetian (Hadjiatou) Watermill', 'Ancient monument; folkloric history — texture &amp; stone shots', { couples:0, nature:1, families:1, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Sights & Landmarks', 'Traditional Olive Mill', 'Restored, listed building; stone presses, golden interior light', { couples:1, nature:0, families:1, foodies:2, wellness:0, culture:2, eat3:0, vs_zygi:1, postcards:2 }, 'Guided tour, touching the presses, tasting olive oil', 'Small olive oil tasting cups, bread for dipping'),
+  r('Sights & Landmarks', 'Andreas Evripides Art Gallery', 'Artworks of community member missing since 1974', { couples:0, nature:0, families:0, foodies:0, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Sights & Landmarks', 'The Village Orchard (To Perivoli)', 'Citrus excursion area; free fruit from the Council', { couples:1, nature:2, families:2, foodies:2, wellness:2, culture:1, eat3:0, vs_zygi:1, postcards:2 }, 'Picking oranges, peeling and tasting under the trees', 'Basket for picking, knife for peeling, picnic blanket'),
+  r('Sights & Landmarks', 'Venetian (Hadjiatou) Watermill', 'Ancient monument; folkloric history', { couples:0, nature:1, families:1, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
   r('Sights & Landmarks', 'Alakati / Millstone', 'Old grinding stone — heritage detail shot', { couples:0, nature:0, families:0, foodies:1, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
-  r('Sights & Landmarks', 'Stone houses &amp; wooden balconies', 'Picturesque alleys; limestone facades — village character', { couples:1, nature:0, families:1, foodies:0, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
-  r('Sights & Landmarks', 'Heroes Monument', 'At entrance of Community Hall — historical anchor', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:0 }),
-  r('Sights & Landmarks', 'Olive Park (open-air reading)', 'Under olive trees — show: reading a book, journaling, napping in the shade', { couples:1, nature:1, families:1, foodies:0, wellness:2, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Sights & Landmarks', 'Stone houses &amp; wooden balconies', 'Picturesque alleys; limestone facades', { couples:1, nature:0, families:1, foodies:0, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Sights & Landmarks', 'Heroes Monument', 'At entrance of Community Hall', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:0 }),
+  r('Sights & Landmarks', 'Olive Park (open-air reading)', 'Under olive trees', { couples:1, nature:1, families:1, foodies:0, wellness:2, culture:1, eat3:0, vs_zygi:0, postcards:1 }, 'Reading a book, journaling, napping in the shade', 'Books, journal, pen, blanket, straw hat'),
   r('Sights & Landmarks', 'Stegi Grammaton tou Neou', 'Literary House of the Young', { couples:0, nature:0, families:1, foodies:0, wellness:1, culture:1, eat3:0, vs_zygi:0, postcards:0 }),
-  r('Sights & Landmarks', 'The Village Farm (Agroktima)', 'Working farm — show: kids feeding animals, collecting eggs, picking produce', { couples:0, nature:1, families:2, foodies:1, wellness:1, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Sights & Landmarks', 'The Village Farm (Agroktima)', 'Working farm with animals and produce', { couples:0, nature:1, families:2, foodies:1, wellness:1, culture:1, eat3:0, vs_zygi:0, postcards:1 }, 'Kids feeding animals, collecting eggs, picking produce', 'Small bucket for eggs, kid-sized wellies'),
   r('Sights & Landmarks', 'Community Amphitheatre', 'Open-air; hosts the annual festival', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
-  r('Sights & Landmarks', 'Community Football Stadium', 'Local matches, weekend community life', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0 }),
+  r('Sights & Landmarks', 'Community Football Stadium', 'Local matches, weekend community life', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0 }, '', 'Football'),
 
-  r('Photo Spots', '"Stephani" window-bench viewpoint', 'Iconic frame — show: sitting on the bench, coffee in hand, watching sunrise', { couples:2, nature:1, families:1, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:2, postcards:2 }),
-  r('Photo Spots', '"Heart" on the beach', 'Famous heart sculpture, sea backdrop — show: couple posing, kids running around it', { couples:2, nature:0, families:2, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:2, postcards:2 }),
+  r('Photo Spots', '"Stephani" window-bench viewpoint', 'Iconic village frame', { couples:2, nature:1, families:1, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:2, postcards:2 }, 'Sitting on the bench, coffee in hand, watching sunrise', 'Cyprus coffee in a traditional cup, light scarf for dawn chill'),
+  r('Photo Spots', '"Heart" on the beach', 'Famous heart sculpture, sea backdrop', { couples:2, nature:0, families:2, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:2, postcards:2 }, 'Couple posing, kids running around it'),
   r('Photo Spots', 'View Point Frame', 'Wooden picture-frame installation', { couples:1, nature:1, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
 
-  r('Beaches & Coast', 'Akakia Beach', 'Gold sand, calm shallow water — show: swimming, sunbathing, kids splashing in the shallows', { couples:2, nature:1, families:2, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2, glamping:2 }),
-  r('Beaches & Coast', 'Maia Beach', 'Sheltered swim, family-favorite — show: families setting up for the day, kids building sandcastles', { couples:2, nature:1, families:2, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2, glamping:2 }),
+  r('Beaches & Coast', 'Akakia Beach', 'Gold sand, calm shallow water', { couples:2, nature:1, families:2, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2, glamping:2 }, 'Swimming, sunbathing, kids splashing in the shallows', 'Swimsuits, beach towels, sunscreen, inflatables, snorkel mask'),
+  r('Beaches & Coast', 'Maia Beach', 'Sheltered swim, family-favorite', { couples:2, nature:1, families:2, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2, glamping:2 }, 'Families setting up for the day, kids building sandcastles', 'Swimsuits, bucket &amp; spade set, beach umbrella, cool box with fruit'),
   r('Beaches & Coast', '8.5km coastline (rocky stretches)', 'Wild, less-built coastal sections — drone material', { couples:1, nature:2, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2, glamping:2 }),
-  r('Beaches & Coast', 'Akakia Beach Bar', 'Terraced setting — show: ordering cocktails, clinking glasses, feet in the sand', { couples:2, nature:0, families:1, foodies:1, wellness:1, culture:0, eat3:1, vs_zygi:1, postcards:2, glamping:1 }),
-  r('Beaches & Coast', 'Maia Beach Bar', 'Family-run on-beach bar — show: family sharing a meal, kids with burgers, chatting with the owners', { couples:1, nature:0, families:2, foodies:1, wellness:1, culture:0, eat3:1, vs_zygi:1, postcards:1, glamping:1 }),
+  r('Beaches & Coast', 'Akakia Beach Bar', 'Terraced on-beach setting', { couples:2, nature:0, families:1, foodies:1, wellness:1, culture:0, eat3:1, vs_zygi:1, postcards:2, glamping:1 }, 'Ordering cocktails, clinking glasses, feet in the sand', 'Sunglasses, summer hat'),
+  r('Beaches & Coast', 'Maia Beach Bar', 'Family-run on-beach bar', { couples:1, nature:0, families:2, foodies:1, wellness:1, culture:0, eat3:1, vs_zygi:1, postcards:1, glamping:1 }, 'Family sharing a meal, kids with burgers, chatting with the owners'),
 
-  r('Religious & Heritage', 'Church of Agios Theodoros', 'Main village church, tall dome; centerpiece of the square', { couples:1, nature:0, families:1, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Religious & Heritage', 'Church of Agios Theodoros', 'Main village church, tall dome; centerpiece of the square', { couples:1, nature:0, families:1, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }, '', 'Modest shoulders/knees cover-up'),
   r('Religious & Heritage', 'Agios Athanasios Pentaschoinitis (ruins)', 'Byzantine-style ruined chapel; tomb discovered 2004', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
   r('Religious & Heritage', 'Agioi Anargyroi chapel', 'Built 1919', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
-  r('Religious & Heritage', 'Panagia Astathkiotissa (15th c.)', '1.5km east on small hill; 16th-c frescoes — show: walking up the path, lighting a candle, admiring frescoes', { couples:2, nature:1, families:0, foodies:0, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Religious & Heritage', 'Panagia Astathkiotissa (15th c.)', '1.5km east on small hill; 16th-c frescoes', { couples:2, nature:1, families:0, foodies:0, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:2 }, 'Walking up the path, lighting a candle, admiring frescoes', 'Candles, comfortable walking shoes, cover-up for shoulders'),
   r('Religious & Heritage', 'Holy Three Children &amp; Prophet Daniel chapel', 'Small chapel', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
-  r('Religious & Heritage', 'Mosaic of Agios Theodoros', 'Council-commissioned mosaic — graphic detail shot', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
-  r('Religious & Heritage', 'Turkish Cypriot Mosque', 'Heritage of the mixed-village past — important context', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Religious & Heritage', 'Mosaic of Agios Theodoros', 'Council-commissioned mosaic', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
+  r('Religious & Heritage', 'Turkish Cypriot Mosque', 'Heritage of the mixed-village past', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
   r('Religious & Heritage', 'Agios Gerasimos', 'Smaller chapel', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:0, postcards:1 }),
 
-  r('Sports & Activities', 'Cycling routes', 'Marked village &amp; coastal routes — movement b-roll', { couples:1, nature:2, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:1 }),
-  r('Sports & Activities', 'Sea fishing', 'Show: joining a fisherman on the boat, pulling nets, handing catch to the tavern kitchen', { couples:0, nature:1, families:1, foodies:1, wellness:0, culture:1, eat3:0, vs_zygi:2, postcards:1 }),
-  r('Sports & Activities', 'Yoga', 'Show: sunrise yoga on the beach, stretching by the sea', { couples:1, nature:1, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:0, postcards:1 }),
-  r('Sports & Activities', 'Canoe / Kayak lessons', 'Show: paddling along the coastline, kayaking up the river mouth', { couples:2, nature:2, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
-  r('Sports & Activities', 'Motor sport', 'Track / off-road area', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0 }),
-  r('Sports & Activities', 'To Vrytzii Nature Trail', '850m Natura 2000 trail — show: walking through the gorge, peering into caves, stopping at viewpoints', { couples:1, nature:2, families:1, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
-  r('Sports & Activities', 'Pentaschinos Gorge walking trail', 'Village to sea route — show: strolling along the river, crossing stepping stones, citrus groves on both sides', { couples:1, nature:2, families:1, foodies:0, wellness:2, culture:1, eat3:0, vs_zygi:1, postcards:2 }),
+  r('Sports & Activities', 'Cycling routes', 'Marked village &amp; coastal routes', { couples:1, nature:2, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:1 }, 'Riding through village and along the coast', 'Bikes, helmets, water bottles, backpack'),
+  r('Sports & Activities', 'Sea fishing', 'Local fishermen supply the taverns', { couples:0, nature:1, families:1, foodies:1, wellness:0, culture:1, eat3:0, vs_zygi:2, postcards:1 }, 'Joining a fisherman on the boat, pulling nets, handing catch to the tavern kitchen', 'Sun hat, waterproof layer'),
+  r('Sports & Activities', 'Yoga', 'Beach &amp; nature sessions', { couples:1, nature:1, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:0, postcards:1 }, 'Sunrise yoga on the beach, stretching by the sea', 'Yoga mats, light activewear, water bottle'),
+  r('Sports & Activities', 'Canoe / Kayak lessons', 'Coast and river routes', { couples:2, nature:2, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2 }, 'Paddling along the coastline, kayaking up the river mouth', 'Life vests, dry bag for camera, swimwear underneath'),
+  r('Sports & Activities', 'Motor sport', 'Track / off-road area', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:0, eat3:0, vs_zygi:0, postcards:0 }, '', 'Helmet, goggles'),
+  r('Sports & Activities', 'To Vrytzii Nature Trail', '850m Natura 2000 trail', { couples:1, nature:2, families:1, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2 }, 'Walking through the gorge, peering into caves, stopping at viewpoints', 'Hiking shoes, water, small backpack, binoculars'),
+  r('Sports & Activities', 'Pentaschinos Gorge walking trail', 'Village to sea route through citrus groves', { couples:1, nature:2, families:1, foodies:0, wellness:2, culture:1, eat3:0, vs_zygi:1, postcards:2 }, 'Strolling along the river, crossing stepping stones, citrus groves on both sides', 'Sturdy sandals or trainers, water, sun hat'),
   r('Sports & Activities', 'Horse trails', 'Coming soon', { couples:1, nature:2, families:1, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:1 }),
 
-  r('Dining', 'Mamas Fish Tavern', '#1 rated — show: choosing fish from the display, eating with hands, toasting over a sea-view table', { couples:2, nature:0, families:1, foodies:2, wellness:0, culture:0, eat3:2, vs_zygi:2, postcards:1 }),
+  r('Dining', 'Mamas Fish Tavern', '#1 rated in village; fresh catch, traditional setting', { couples:2, nature:0, families:1, foodies:2, wellness:0, culture:0, eat3:2, vs_zygi:2, postcards:1 }, 'Choosing fish from the display, eating with hands, toasting over a sea-view table'),
   r('Dining', 'Pentaschoinos Seafood Experience', 'Modern fish tavern, sea view', { couples:2, nature:0, families:1, foodies:2, wellness:0, culture:0, eat3:2, vs_zygi:2, postcards:1 }),
   r('Dining', 'Limni Fish Tavern', 'Fish tavern alongside the others', { couples:1, nature:0, families:1, foodies:2, wellness:0, culture:0, eat3:1, vs_zygi:2, postcards:1 }),
-  r('Dining', 'Mezedofolia Tavern', 'Village setting — show: sharing meze plates, breaking bread, pouring zivania', { couples:1, nature:0, families:2, foodies:2, wellness:0, culture:1, eat3:2, vs_zygi:0, postcards:1 }),
+  r('Dining', 'Mezedofolia Tavern', 'Traditional meze, village setting', { couples:1, nature:0, families:2, foodies:2, wellness:0, culture:1, eat3:2, vs_zygi:0, postcards:1 }, 'Sharing meze plates, breaking bread, pouring zivania'),
   r('Dining', '"I Kali Eftychia" Tavern', 'Family-friendly traditional', { couples:1, nature:0, families:2, foodies:2, wellness:0, culture:1, eat3:1, vs_zygi:0, postcards:1 }),
   r('Dining', '"O Paliomouchtaros" Tavern', 'Traditional tavern, village atmosphere', { couples:1, nature:0, families:1, foodies:2, wellness:0, culture:1, eat3:1, vs_zygi:0, postcards:1 }),
   r('Dining', '"To Vasano" Tavern', 'Village tavern', { couples:1, nature:0, families:1, foodies:2, wellness:0, culture:1, eat3:1, vs_zygi:0, postcards:1 }),
-  r('Dining', 'IKMADA Coffee and More', 'Show: sipping Cyprus coffee, chatting with locals at the counter', { couples:1, nature:0, families:1, foodies:1, wellness:1, culture:1, eat3:1, vs_zygi:0, postcards:0 }),
+  r('Dining', 'IKMADA Coffee and More', 'Local coffee spot', { couples:1, nature:0, families:1, foodies:1, wellness:1, culture:1, eat3:1, vs_zygi:0, postcards:0 }, 'Sipping Cyprus coffee, chatting with locals at the counter'),
 
-  r('Accommodation', 'For Rest Glamping', 'Hilltop 360° viewpoint — show: morning coffee on the deck, watching sunrise over the valley', { couples:2, nature:2, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2, glamping:2 }),
-  r('Accommodation', 'Cyprus Glamping Park', 'Olive-grove cabins; family-friendly gates', { couples:1, nature:2, families:2, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:0, postcards:2, glamping:2 }),
-  r('Accommodation', 'Geometry (themed glamping)', 'Marketed as first themed glamping in Cyprus — distinctive design (verify claim before posting)', { couples:2, nature:1, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2, glamping:2 }),
+  r('Accommodation', 'For Rest Glamping', 'Hilltop 360° viewpoint; serene', { couples:2, nature:2, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2, glamping:2 }, 'Morning coffee on the deck, watching sunrise over the valley', 'Cosy robe, coffee mug, blanket for the deck'),
+  r('Accommodation', 'Cyprus Glamping Park', 'Olive-grove cabins; family-friendly', { couples:1, nature:2, families:2, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:0, postcards:2, glamping:2 }, 'Kids running between cabins, campfire evening', 'Fairy lights, board games, marshmallows for campfire'),
+  r('Accommodation', 'Geometry (themed glamping)', 'First themed glamping in Cyprus — distinctive design (verify claim)', { couples:2, nature:1, families:0, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:1, postcards:2, glamping:2 }),
   r('Accommodation', 'Happy Glamping Cy', 'Glamping concept', { couples:2, nature:1, families:1, foodies:0, wellness:2, culture:0, eat3:0, vs_zygi:0, postcards:2, glamping:2 }),
   r('Accommodation', 'Konatzi tou Flokka', 'Traditional house — heritage stay', { couples:1, nature:0, families:1, foodies:1, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:2 }),
-  r('Accommodation', 'Elya Beach Luxury Suites', 'Coast-side luxury — wake up to sea', { couples:2, nature:0, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:2 }),
+  r('Accommodation', 'Elya Beach Luxury Suites', 'Coast-side luxury — wake up to sea', { couples:2, nature:0, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:2 }, 'Waking up, opening curtains to the sea, balcony breakfast', 'White robe, champagne flutes'),
   r('Accommodation', 'Kamaroporta Luxury Apartments', 'Premium village apartments', { couples:2, nature:0, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:1 }),
   r('Accommodation', 'Pentasino Traditional House', 'Heritage stone house', { couples:1, nature:0, families:1, foodies:1, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
   r('Accommodation', 'Eleonas Seaview Cottages', 'Olive-grove cottages with sea view', { couples:2, nature:1, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:2 }),
   r('Accommodation', '"KAMPOS" tourist apartments', 'Tourist apartments', { couples:1, nature:1, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:0, postcards:1 }),
   r('Accommodation', 'Mountain Retreat Rooms &amp; Suites', 'Elevated village setting', { couples:2, nature:1, families:1, foodies:0, wellness:1, culture:0, eat3:0, vs_zygi:1, postcards:2 }),
 
-  r('Cultural & Community', 'WARL workshops (Women\'s Assoc.)', 'Listed building — show: hands-on craft workshop, traditional cooking, learning from local women', { couples:0, nature:0, families:1, foodies:1, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
-  r('Cultural & Community', '"Pentaschoinos" Folklore Group', 'Show: learning traditional dance steps, trying on costume, rehearsal with the group', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:0 }),
+  r('Cultural & Community', 'WARL workshops (Women\'s Assoc.)', 'Heartlands of Legends; listed building', { couples:0, nature:0, families:1, foodies:1, wellness:1, culture:2, eat3:0, vs_zygi:0, postcards:1 }, 'Hands-on craft workshop, traditional cooking, learning from local women', 'Apron, ingredients provided on-site'),
+  r('Cultural & Community', '"Pentaschoinos" Folklore Group', 'Local folklore society', { couples:0, nature:0, families:1, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:0 }, 'Learning traditional dance steps, trying on costume, rehearsal with the group', 'Comfortable shoes for dancing'),
   r('Cultural & Community', 'Annual Art &amp; Culture Festival', 'Summer festival at the amphitheatre', { couples:1, nature:0, families:2, foodies:1, wellness:0, culture:2, eat3:0, vs_zygi:0, postcards:1 }),
-  r('Cultural & Community', 'E-bikes', 'Show: riding through village streets, stopping at viewpoints, exploring the coast path', { couples:1, nature:2, families:1, foodies:0, wellness:1, culture:1, eat3:0, vs_zygi:1, postcards:1 }),
+  r('Cultural & Community', 'E-bikes', 'Community e-bike service', { couples:1, nature:2, families:1, foodies:0, wellness:1, culture:1, eat3:0, vs_zygi:1, postcards:1 }, 'Riding through village streets, stopping at viewpoints, exploring the coast path', 'Helmet, sunglasses, small backpack'),
   r('Cultural & Community', 'Telephone Book', 'Community telephone directory — charming village detail', { couples:0, nature:0, families:0, foodies:0, wellness:0, culture:2, eat3:0, vs_zygi:1, postcards:1 }),
   r('Cultural & Community', 'Interactive Screen', 'Digital visitor information point', { couples:1, nature:0, families:1, foodies:0, wellness:0, culture:1, eat3:0, vs_zygi:1, postcards:0 }),
 
@@ -753,7 +762,8 @@ function render() {
               <button class="icon-btn" data-action="remove-col" data-idx="${i}" title="Remove this column">×</button>
             </div>
           </th>`).join('')}
-        <th class="notes-col">Notes</th>
+        <th class="notes-col">Activities</th>
+        <th class="notes-col">Props</th>
         <th class="actions-col"></th>
       </tr>
     </thead>`;
@@ -764,7 +774,7 @@ function render() {
     grouped[row.category].push({row, idx});
   });
 
-  const totalCols = state.columns.length + 4;
+  const totalCols = state.columns.length + 5;
   let bodyHtml = '<tbody>';
   let visibleNum = 0;
   Object.keys(grouped).forEach(cat => {
@@ -776,13 +786,17 @@ function render() {
           <td class="row-num">${visibleNum}</td>
           <td class="location-cell">
             <div class="cell-edit" contenteditable="true" data-field="name" data-idx="${idx}">${row.name}</div>
+            ${row.notes ? `<div class="loc-notes cell-edit" contenteditable="true" data-field="notes" data-idx="${idx}">${row.notes}</div>` : ''}
           </td>
           ${state.columns.map(c => `
             <td class="mark-cell">
               <button class="mark-btn" data-mark="${row.marks[c.id] || 0}" data-idx="${idx}" data-col="${c.id}" aria-label="Toggle mark">${markGlyph(row.marks[c.id] || 0)}</button>
             </td>`).join('')}
           <td class="notes">
-            <div class="cell-edit" contenteditable="true" data-field="notes" data-idx="${idx}">${row.notes || ''}</div>
+            <div class="cell-edit" contenteditable="true" data-field="activity" data-idx="${idx}">${row.activity || ''}</div>
+          </td>
+          <td class="notes">
+            <div class="cell-edit" contenteditable="true" data-field="props" data-idx="${idx}">${row.props || ''}</div>
           </td>
           <td class="actions-cell">
             <button class="icon-btn" data-action="remove-row" data-idx="${idx}" title="Remove this location">×</button>
@@ -883,7 +897,11 @@ document.getElementById('add-row').addEventListener('click', () => {
       <option value="__new__">+ New category…</option>
     </select>
     <label>Notes (optional)</label>
-    <input type="text" id="new-notes" placeholder="Visual angle, best time, fact to feature">
+    <input type="text" id="new-notes" placeholder="Short description of the place">
+    <label>Activity (optional)</label>
+    <input type="text" id="new-activity" placeholder="e.g. picking oranges, tasting olive oil">
+    <label>Props (optional)</label>
+    <input type="text" id="new-props" placeholder="e.g. basket, blanket, sunscreen">
     <div class="dialog-actions">
       <button class="btn btn-ghost" id="cancel-add">Cancel</button>
       <button class="btn btn-primary" id="confirm-add">Add location</button>
@@ -913,11 +931,13 @@ document.getElementById('add-row').addEventListener('click', () => {
     if (!name) { document.getElementById('new-name').focus(); return; }
     const category = document.getElementById('new-category').value;
     const notes = document.getElementById('new-notes').value.trim();
+    const activity = document.getElementById('new-activity').value.trim();
+    const props = document.getElementById('new-props').value.trim();
     const marks = {};
     state.columns.forEach(c => marks[c.id] = 0);
     state.rows.push({
       id: name.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-' + Date.now().toString(36),
-      category, name, notes, marks
+      category, name, notes, marks, activity, props
     });
     closeDialog();
     render();
@@ -966,17 +986,19 @@ document.addEventListener('keydown', (e) => {
 });
 
 document.getElementById('export-csv').addEventListener('click', () => {
-  const headerRow = ['Category', 'Location', ...state.columns.map(c => c.label), 'Notes'];
+  const headerRow = ['Category', 'Location', 'Notes', ...state.columns.map(c => c.label), 'Activities', 'Props'];
   const rows = [headerRow];
   state.rows.forEach(r => {
     rows.push([
       r.category,
       r.name,
+      r.notes || '',
       ...state.columns.map(c => {
         const v = r.marks[c.id] || 0;
         return v === 2 ? 'FEATURE' : v === 1 ? 'cameo' : '';
       }),
-      r.notes || ''
+      r.activity || '',
+      r.props || ''
     ]);
   });
   const csv = rows.map(row => row.map(cell => {
