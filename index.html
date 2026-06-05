@@ -1004,7 +1004,7 @@ function updateCounts() {
     el.textContent = `${feats}★ · ${cameos}●`;
 
     // Count locations involved in this video (mark >= 1) that are not yet filmed
-    const involved = state.rows.filter(r => (r.marks[c.id] || 0) >= 1);
+    const involved = state.rows.filter(r => (r.marks[c.id] || 0) === 2);
     const notFilmed = involved.filter(r => !r.filmed).length;
     if (remEl) {
       if (involved.length === 0) {
