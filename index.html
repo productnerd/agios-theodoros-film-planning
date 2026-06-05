@@ -605,6 +605,55 @@ th.format-col:hover .col-actions .icon-btn {
 <script>
 const STORAGE_KEY = 'agios_theodoros_plan_v10';
 
+// Supabase backend
+const SUPABASE_URL = 'https://knftyqkhampkqchoncel.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtuZnR5cWtoYW1wa3FjaG9uY2VsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTE0NDg4MzYsImV4cCI6MjA2NzAyNDgzNn0.fugiTRvgoD3YqAZPQMV3R6Eu0Wx_9vgE6ZK8zjqFutg';
+const TABLE = 'kaimakki_agiostheodoros_matrix';
+const ROW_ID = 'main';
+
+function sbHeaders() {
+  return {
+    'apikey': SUPABASE_KEY,
+    'Authorization': 'Bearer ' + SUPABASE_KEY,
+    'Content-Type': 'application/json',
+    'Prefer': 'return=minimal'
+  };
+}
+
+async function sbLoad() {
+  try {
+    const res = await fetch(
+      `${SUPABASE_URL}/rest/v1/${TABLE}?id=eq.${ROW_ID}&select=state`,
+      { headers: sbHeaders() }
+    );
+    const data = await res.json();
+    if (data.length && data[0].state) {
+      const parsed = data[0].state;
+      if (parsed.rows && parsed.columns) state = parsed;
+    }
+  } catch (e) {
+    console.warn('Supabase load failed, using defaults', e);
+  }
+}
+
+async function sbSave() {
+  try {
+    const body = JSON.stringify({ id: ROW_ID, state, updated_at: new Date().toISOString() });
+    await fetch(
+      `${SUPABASE_URL}/rest/v1/${TABLE}`,
+      {
+        method: 'POST',
+        headers: { ...sbHeaders(), 'Prefer': 'resolution=merge-duplicates,return=minimal' },
+        body
+      }
+    );
+    return true;
+  } catch (e) {
+    console.warn('Supabase save failed', e);
+    return false;
+  }
+}
+
 const defaultColumns = [
   { id: 'couples', label: 'Couples weekend' },
   { id: 'nature', label: 'Nature lovers' },
@@ -719,14 +768,8 @@ function cloneRows(arr) {
   return arr.map(r => ({...r, marks: {...r.marks}, interview: r.interview || ''}));
 }
 
-function load() {
-  try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (parsed.rows && parsed.columns) state = parsed;
-    }
-  } catch (e) {}
+async function load() {
+  await sbLoad();
   render();
 }
 
@@ -736,13 +779,13 @@ function scheduleSave() {
   status.textContent = 'Saving…';
   status.style.color = 'var(--terracotta)';
   if (saveTimer) clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  saveTimer = setTimeout(async () => {
+    const ok = await sbSave();
+    if (ok) {
       status.textContent = 'All changes saved';
       status.style.color = 'var(--olive)';
-    } catch (e) {
-      status.textContent = 'Save failed — copy CSV';
+    } else {
+      status.textContent = 'Save failed — try again';
       status.style.color = 'var(--terracotta)';
     }
   }, 350);
