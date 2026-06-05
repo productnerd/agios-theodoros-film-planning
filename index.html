@@ -20,6 +20,8 @@
   --line: #cdbfa3;
   --line-soft: #e6dcc6;
   --shadow: 0 1px 3px rgba(42, 24, 16, 0.06), 0 2px 8px rgba(42, 24, 16, 0.04);
+  --unlocked: #4a7c5a;
+  --unlocked-bg: #e6f5eb;
 }
 
 * { box-sizing: border-box; }
@@ -463,6 +465,55 @@ th .col-actions {
   margin-top: 2px;
 }
 
+.filmed-toggle {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--unlocked);
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: 5px;
+  flex-shrink: 0;
+}
+
+.location-cell .loc-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+tr[data-filmed="true"] td.location-cell .cell-edit {
+  text-decoration: line-through;
+  opacity: 0.55;
+}
+
+tr[data-filmed="true"] td.location-cell .loc-notes {
+  opacity: 0.45;
+}
+
+.col-remaining {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 9.5px;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--espresso-soft);
+  margin-top: 2px;
+}
+
+.col-remaining.unlocked {
+  color: var(--unlocked);
+  font-weight: 600;
+}
+
+th.format-col.unlocked {
+  background: var(--unlocked-bg);
+}
+
+th.format-col.unlocked .col-label {
+  color: var(--unlocked);
+}
+
 th .col-actions .icon-btn {
   opacity: 0;
 }
@@ -603,7 +654,7 @@ th.format-col:hover .col-actions .icon-btn {
 </div>
 
 <script>
-const STORAGE_KEY = 'agios_theodoros_plan_v11';
+const STORAGE_KEY = 'agios_theodoros_plan_v12';
 
 // Supabase backend
 const SUPABASE_URL = 'https://knftyqkhampkqchoncel.supabase.co';
@@ -764,7 +815,7 @@ const defaultRows = [
 let state = { rows: cloneRows(defaultRows), columns: defaultColumns.map(c => ({...c})) };
 
 function cloneRows(arr) {
-  return arr.map(r => ({...r, marks: {...r.marks}, interview: r.interview || ''}));
+  return arr.map(r => ({...r, marks: {...r.marks}, interview: r.interview || '', filmed: r.filmed || false}));
 }
 
 async function load() {
@@ -803,9 +854,10 @@ function render() {
         <th class="row-num-col">#</th>
         <th class="location-col">Location</th>
         ${state.columns.map((c, i) => `
-          <th class="format-col" data-col-idx="${i}">
+          <th class="format-col" data-col-idx="${i}" data-col-id="${c.id}">
             <span class="col-label" contenteditable="true" data-col="${i}">${c.label}</span>
             <span class="col-count" id="count-${c.id}"></span>
+            <span class="col-remaining" id="remaining-${c.id}"></span>
             <div class="col-actions">
               <button class="icon-btn" data-action="remove-col" data-idx="${i}" title="Remove this column">×</button>
             </div>
@@ -831,11 +883,16 @@ function render() {
     grouped[cat].forEach(({row, idx}) => {
       visibleNum++;
       bodyHtml += `
-        <tr data-row-idx="${idx}">
+        <tr data-row-idx="${idx}" data-filmed="${row.filmed ? 'true' : 'false'}">
           <td class="row-num">${visibleNum}</td>
           <td class="location-cell">
-            <div class="cell-edit" contenteditable="true" data-field="name" data-idx="${idx}">${row.name}</div>
-            ${row.notes ? `<div class="loc-notes cell-edit" contenteditable="true" data-field="notes" data-idx="${idx}">${row.notes}</div>` : ''}
+            <div class="loc-wrap">
+              <input type="checkbox" class="filmed-toggle" data-idx="${idx}" ${row.filmed ? 'checked' : ''} title="Mark as filmed">
+              <div>
+                <div class="cell-edit" contenteditable="true" data-field="name" data-idx="${idx}">${row.name}</div>
+                ${row.notes ? `<div class="loc-notes cell-edit" contenteditable="true" data-field="notes" data-idx="${idx}">${row.notes}</div>` : ''}
+              </div>
+            </div>
           </td>
           ${state.columns.map(c => `
             <td class="mark-cell">
@@ -869,6 +926,16 @@ function render() {
       state.rows[idx].marks[col] = next;
       btn.dataset.mark = next;
       btn.textContent = markGlyph(next);
+      updateCounts();
+      scheduleSave();
+    });
+  });
+
+  table.querySelectorAll('.filmed-toggle').forEach(cb => {
+    cb.addEventListener('change', () => {
+      const idx = parseInt(cb.dataset.idx);
+      state.rows[idx].filmed = cb.checked;
+      cb.closest('tr').dataset.filmed = cb.checked ? 'true' : 'false';
       updateCounts();
       scheduleSave();
     });
@@ -928,10 +995,31 @@ function escapeHtml(s) {
 function updateCounts() {
   state.columns.forEach(c => {
     const el = document.getElementById(`count-${c.id}`);
+    const remEl = document.getElementById(`remaining-${c.id}`);
+    const th = document.querySelector(`th[data-col-id="${c.id}"]`);
     if (!el) return;
     const feats = state.rows.filter(r => r.marks[c.id] === 2).length;
     const cameos = state.rows.filter(r => r.marks[c.id] === 1).length;
     el.textContent = `${feats}★ · ${cameos}●`;
+
+    // Count locations involved in this video (mark >= 1) that are not yet filmed
+    const involved = state.rows.filter(r => (r.marks[c.id] || 0) >= 1);
+    const notFilmed = involved.filter(r => !r.filmed).length;
+    if (remEl) {
+      if (involved.length === 0) {
+        remEl.textContent = '';
+        remEl.className = 'col-remaining';
+      } else if (notFilmed === 0) {
+        remEl.textContent = '✓ ready to edit';
+        remEl.className = 'col-remaining unlocked';
+      } else {
+        remEl.textContent = `${notFilmed} location${notFilmed > 1 ? 's' : ''} left`;
+        remEl.className = 'col-remaining';
+      }
+    }
+    if (th) {
+      th.classList.toggle('unlocked', involved.length > 0 && notFilmed === 0);
+    }
   });
 }
 
