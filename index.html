@@ -547,6 +547,63 @@ th.format-col:hover .col-actions .icon-btn {
   font-family: 'Inter', sans-serif;
 }
 
+.dialog.script-dialog {
+  max-width: 580px;
+}
+
+.script-link {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--terracotta);
+  cursor: pointer;
+  margin-top: 3px;
+  opacity: 0.8;
+}
+
+.script-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.script-body {
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--espresso);
+  white-space: pre-wrap;
+  margin: 14px 0;
+  min-height: 80px;
+  outline: none;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: #fffdf8;
+}
+
+.script-body:focus {
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 2px rgba(139, 26, 74, 0.1);
+}
+
+.script-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--espresso-soft);
+  margin-top: 8px;
+}
+
+.script-locations {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--espresso-soft);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
 .dialog h2 {
   font-family: 'Fraunces', Georgia, serif;
   font-weight: 500;
@@ -856,6 +913,7 @@ function render() {
             <span class="col-label" contenteditable="true" data-col="${i}">${c.label}</span>
             <span class="col-count" id="count-${c.id}"></span>
             <span class="col-remaining" id="remaining-${c.id}"></span>
+            ${scripts[c.id] ? `<span class="script-link" data-script-col="${c.id}">📄 script</span>` : ''}
             <div class="col-actions">
               <button class="icon-btn" data-action="remove-col" data-idx="${i}" title="Remove this column">×</button>
             </div>
@@ -970,6 +1028,13 @@ function render() {
     });
   });
 
+  table.querySelectorAll('.script-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openScript(link.dataset.scriptCol);
+    });
+  });
+
   table.querySelectorAll('[data-action="remove-col"]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -1019,6 +1084,57 @@ function updateCounts() {
     if (th) {
       th.classList.toggle('unlocked', involved.length > 0 && notFilmed === 0);
     }
+  });
+}
+
+// ── Voiceover Scripts ──
+const scripts = {
+  couples: `Picture this — no alarms, no plans, just the two of you. Sunrise at the Stephani viewpoint, Cyprus coffee in hand. Take a canoe along the coast — the cliffs, the water, nobody else. Lunch at Pentaschoinos, seafood platter with a sea view. Afternoon, slow down at the Olive Park — a bench, a book, the shade. Evening, Mezedofolia — plates keep arriving, zivania keeps pouring. Sleep at Konatzi tou Flokka, a stone house older than your grandparents' stories — or wake up to the sea at Elya Beach Suites.`,
+
+  nature: `If you need trees more than people, this is your village. Start on the Vrytzii trail — a gorge, caves, wild herbs everywhere. Grab a bike and ride through citrus groves to the coast. The Village Orchard — pick oranges off the branch, free, courtesy of the Council. Lunch at Limni, the catch was swimming this morning. Afternoon, find that rocky coastline where nobody goes — 8.5 kilometres, all yours. Dinner at To Vasano, village food and village wine. Sleep at For Rest Glamping — hilltop, 360-degree views, nothing but crickets.`,
+
+  families: `Alright, here's what you do with the kids. Morning — the Village Farm. They'll feed the goats, collect eggs, get properly dirty. Then Akakia Beach — shallow water, golden sand, and a bar right there so you can actually sit down. Lunch at Limni, fresh fish meze — let them try things, they'll surprise you. The Heart sculpture on the beach? That's your family photo. Dinner at I Kali Eftychia — big portions, warm people, extra bread without asking. Stay at Kamaroporta, village quiet, space for everyone.`,
+
+  foodies: `You want to eat like the village eats? Start at the harbour — a fisherman pulling nets. That catch is on your plate by lunch at Mamas, the best-rated tavern in the village. Afternoon, the Olive Mill — taste the oil, drag your bread through it. Then go fishing yourself — pull something up, hand it to the kitchen. That's "from boat to plate," and it's real here. Dinner at O Paliomouchtaros — charcoal-grilled, recipes without measurements, just memory. Sleep at Eleonas, olive groves meet sea view.`,
+
+  wellness: `Some days you need to do nothing — on purpose. Yoga on the beach at sunrise, sand under your mat. Then the Olive Park — a bench, a tree, a book or nothing at all. Walk the Vrytzii trail, gentle enough to feel like a stroll, wild enough to feel like escape. Lunch at Mezedofolia — twenty small plates, all slow. To Kafenio after — old men playing tavli, nobody in a hurry. Evening, Pentaschoinos does seafood with a view that makes you forget your inbox. Sleep at Geometry Glamping, where every tent is a different world.`,
+
+  culture: `This village remembers everything. Start at the Church of Agios Theodoros — the dome, the square, the heart of it all. Walk to Panagia Astathkiotissa, a 15th-century chapel with frescoes that survived five hundred years. The Olive Mill — stone presses, golden light, a story in every crack. Lunch at Mamas — the owner shares family recipes that go back generations. Coffee at To Kafenio with the old men and the backgammon. Dinner at I Kali Eftychia — "good happiness" isn't just the name. Sleep at Konatzi tou Flokka, a heritage house that puts you inside the history.`
+};
+
+function openScript(colId) {
+  const col = state.columns.find(c => c.id === colId);
+  if (!col) return;
+  const dialogBg = document.getElementById('dialog-bg');
+  const dialog = document.getElementById('dialog');
+  const scriptText = scripts[colId] || '';
+  const involved = state.rows.filter(r => (r.marks[colId] || 0) >= 1 && r.category !== 'Not in Agios Theodoros');
+  const locList = involved.map(r => `${r.marks[colId] === 2 ? '★' : '●'} ${r.name}`).join(', ');
+  const wordCount = scriptText.split(/\s+/).filter(Boolean).length;
+
+  dialog.className = 'dialog script-dialog';
+  dialog.innerHTML = `
+    <h2>${escapeHtml(col.label)}</h2>
+    <div class="script-locations"><strong>Locations:</strong> ${escapeHtml(locList)}</div>
+    <div class="script-body" contenteditable="true" id="script-text">${escapeHtml(scriptText)}</div>
+    <div class="script-meta"><span id="script-wc">${wordCount} words</span> · ~${Math.round(wordCount / 2.5)}s at natural pace</div>
+    <div class="dialog-actions">
+      <button class="btn btn-ghost" id="cancel-script">Close</button>
+    </div>
+  `;
+  dialogBg.classList.add('open');
+
+  document.getElementById('script-text').addEventListener('input', (e) => {
+    scripts[colId] = e.target.textContent;
+    const wc = e.target.textContent.split(/\s+/).filter(Boolean).length;
+    document.getElementById('script-wc').textContent = wc + ' words';
+  });
+  document.getElementById('cancel-script').addEventListener('click', () => {
+    dialog.className = 'dialog';
+    dialogBg.classList.remove('open');
+  });
+  dialogBg.addEventListener('click', (e) => {
+    if (e.target === dialogBg) { dialog.className = 'dialog'; dialogBg.classList.remove('open'); }
   });
 }
 
