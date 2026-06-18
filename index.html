@@ -595,20 +595,20 @@ th.format-col:hover .col-actions .icon-btn {
   font-family: 'Fraunces', Georgia, serif;
   font-size: 15px;
   line-height: 1.65;
-  color: #2d5a3d;
+  color: var(--espresso);
   white-space: pre-wrap;
   margin: 14px 0;
   min-height: 80px;
   outline: none;
-  border: 1px solid #b5d4be;
+  border: 1px solid var(--line-soft);
   border-radius: 8px;
   padding: 14px 16px;
-  background: #f2f9f4;
+  background: #fffdf8;
 }
 
 .script-body:focus {
-  border-color: #4a7c5a;
-  box-shadow: 0 0 0 2px rgba(74, 124, 90, 0.15);
+  border-color: var(--terracotta);
+  box-shadow: 0 0 0 2px rgba(139, 26, 74, 0.1);
 }
 
 .script-meta {
@@ -1115,17 +1115,17 @@ function updateCounts() {
 
 // ── Voiceover Scripts ──
 const scripts = {
-  couples: `Picture this — no alarms, no plans, just the two of you. Sunrise at the Stephani viewpoint, Cyprus coffee in hand. Take a canoe along the coast — the cliffs, the water, nobody else. Lunch at Pentaschoinos, seafood platter with a sea view. Afternoon, slow down at the Olive Park — a bench, a book, the shade. Evening, Mezedofolia — plates keep arriving, zivania keeps pouring. Sleep at Konatzi tou Flokka, a stone house older than your grandparents' stories — or wake up to the sea at Elya Beach Suites.`,
+  couples: `Φαντάσου — τζιαμέ ξυπνητήρια, τζιαμέ πλάνα, μόνο οι δυο σας. Ανατολή στο Στεφάνι, κυπριακός καφές στο σιέρι. Πκιάστε ένα κανό τζιαι κάμετε παράλια — βράχοι, γαλάζια νερά, κανένας τριγύρω. Μεσημέρι στο Πενταστοίχινο, πιατέλα θαλασσινών με θέα τη θάλασσα. Απόγευμα, χαλαρώστε στο Πάρκο Ελιάς — παγκάκι, βιβλίο, σκιά τζιαι τίποτε άλλο. Βράδυ στη Μεζεδοφωλιά — τα πιάτα έρκουνται τζιαι εν σταματούν, η ζιβανία τρέσιει. Ύπνος στο Κονάτζι του Φλόκκα, πέτρινο σπίτι πιο παλιό που τις ιστορίες της γιαγιάς σου — ή ξύπνα με θέα θάλασσα στο Elya Beach Suites. Εν σημασία πού μένεις — σημασία εν ότι είστε μαζί, τζιαι τούτο το χωρκό ξέρει να σας αφήσει ήσυχους.`,
 
-  nature: `If you need trees more than people, this is your village. Start on the Vrytzii trail — a gorge, caves, wild herbs everywhere. Grab a bike and ride through citrus groves to the coast. The Village Orchard — pick oranges off the branch, free, courtesy of the Council. Lunch at Limni, the catch was swimming this morning. Afternoon, find that rocky coastline where nobody goes — 8.5 kilometres, all yours. Dinner at To Vasano, village food and village wine. Sleep at For Rest Glamping — hilltop, 360-degree views, nothing but crickets.`,
+  nature: `Αν θέλεις δέντρα αντί ανθρώπους, τούτο εν το χωρκό σου. Ξεκίνα που το μονοπάτι του Βρυτζιού — φαράγγι, σπηλιές, άγρια βότανα παντού. Πκιάσε ποδήλατο τζιαι κάμε που τα περιβόλια ως την παραλία. Το Περιβόλι του χωρκού — μάσε πορτοκάλλια που τον κλάδο, τζάμπα, προσφορά του Κοινοτικού. Μεσημέρι στη Λίμνη — το ψάρι εκολύμπαν τούτο το πρωί ακόμα. Απόγευμα, βρες εκείνη τη βραχώδη ακτή που κανένας εν πηαίννει — οκτώμισι χιλιόμετρα, ούλλα δικά σου. Βράδυ στο «Το Βασανό», χωρκάτικο φαΐ τζιαι κρασί ντόπιο. Ύπνος στο For Rest Glamping — κορφή λόφου, θέα τριακόσιες εξήντα μοίρες, μόνο τζιτζίκια τζιαι αστέρια.`,
 
-  families: `Alright, here's what you do with the kids. Morning — the Village Farm. They'll feed the goats, collect eggs, get properly dirty. Then Akakia Beach — shallow water, golden sand, and a bar right there so you can actually sit down. Lunch at Limni, fresh fish meze — let them try things, they'll surprise you. The Heart sculpture on the beach? That's your family photo. Dinner at I Kali Eftychia — big portions, warm people, extra bread without asking. Stay at Kamaroporta, village quiet, space for everyone.`,
+  families: `Λοιπόν, να τι κάμνετε με τα πιτσιρίκια. Πρωί — το Αγρόκτημα. Εν να ταΐσουν τες κατσίκες, εν να μασήσουν αυκά, εν να λερωθούν σωστά — τζιαι εν πειράζει. Μετά Ακακία Beach — ρηχά νερά, χρυσή άμμος, τζιαι μπαρ εκεί δίπλα να καθήσεις τζιαι εσύ λλίο. Μεσημέρι στη Λίμνη, ψαρομεζές — άσε τα να δοκιμάσουν πράματα, εν να σε ξαφνιάσουν. Η Καρδιά στην παραλία; Τούτη εν η οικογενειακή σας φωτογραφία. Βράδυ στην «Η Καλή Ευτυχία» — μεγάλες μερίδες, ζεστοί άνθρωποι, ψωμί έξτρα χωρίς να ρωτήσεις. Μείνετε στο Καμαροπόρτα — χωρκό ήσυχο, χώρος για ούλλους, τζιαι τα μωρά κοιμούνται σαν πουλλάκια.`,
 
-  foodies: `You want to eat like the village eats? Start at the harbour — a fisherman pulling nets. That catch is on your plate by lunch at Mamas, the best-rated tavern in the village. Afternoon, the Olive Mill — taste the oil, drag your bread through it. Then go fishing yourself — pull something up, hand it to the kitchen. That's "from boat to plate," and it's real here. Dinner at O Paliomouchtaros — charcoal-grilled, recipes without measurements, just memory. Sleep at Eleonas, olive groves meet sea view.`,
+  foodies: `Θέλεις να φας όπως τρώει το χωρκό; Ξεκίνα που το λιμανάκι — ψαράς τραβά δίχτυα. Τούτο το ψάρι εν στο πιάτο σου ως το μεσημέρι, στης Μαμάς — το καλύτερο ψαροταβερνείο του χωρκού, ρώτα όποιον θέλεις. Απόγευμα στον Ελαιόμυλο — δοκίμασε το λάδι, βούτα το ψωμίν σου μέσα, θωρείς τα πιεστήρια τζιαι μυρίζεις ιστορία. Μετά πήαινε ψάρεψε μόνος σου — τράβα κάτι, δώσ' το στην κουζίνα. «Που τη βάρκα στο πιάτο» — εν τζιαι λόγια, εν αληθινό εδώ. Βράδυ στον Παλιομούχταρο — κάρβουνα, συνταγές χωρίς μέτρα, μόνο μνήμη τζιαι μεράκι. Ύπνος στο Ελεώνας — ελιές τζιαι θέα θάλασσα, τι άλλο θέλεις;`,
 
-  wellness: `Some days you need to do nothing — on purpose. Yoga on the beach at sunrise, sand under your mat. Then the Olive Park — a bench, a tree, a book or nothing at all. Walk the Vrytzii trail, gentle enough to feel like a stroll, wild enough to feel like escape. Lunch at Mezedofolia — twenty small plates, all slow. To Kafenio after — old men playing tavli, nobody in a hurry. Evening, Pentaschoinos does seafood with a view that makes you forget your inbox. Sleep at Geometry Glamping, where every tent is a different world.`,
+  wellness: `Κάποιες μέρες θέλεις να μεν κάμνεις τίποτε — επίτηδες. Yoga στην παραλία με την ανατολή, άμμος κάτω που το στρώμα σου. Μετά το Πάρκο Ελιάς — παγκάκι, δέντρο, βιβλίο ή τίποτε ούλλως. Περπάτα το μονοπάτι του Βρυτζιού — αρκετά ήρεμο για βόλτα, αρκετά άγριο για απόδραση. Μεσημέρι στη Μεζεδοφωλιά — είκοσι πιατάκια, ούλλα σιγά σιγά, χωρίς βιάση. Στο Καφενείο μετά — παππούδες παίζουν τάβλι, κανένας εν βιάζεται, ο χρόνος εν αλλιώτικος εδώ. Βράδυ στο Πενταστοίχινο — θαλασσινά με θέα που σε κάμνει να ξεχάσεις τα emails. Ύπνος στο Geometry Glamping, που κάθε σκηνή εν τζιαι άλλος κόσμος.`,
 
-  culture: `This village remembers everything. Start at the Church of Agios Theodoros — the dome, the square, the heart of it all. Walk to Panagia Astathkiotissa, a 15th-century chapel with frescoes that survived five hundred years. The Olive Mill — stone presses, golden light, a story in every crack. Lunch at Mamas — the owner shares family recipes that go back generations. Coffee at To Kafenio with the old men and the backgammon. Dinner at I Kali Eftychia — "good happiness" isn't just the name. Sleep at Konatzi tou Flokka, a heritage house that puts you inside the history.`
+  culture: `Τούτο το χωρκό θυμάται τα πάντα. Ξεκίνα που την εκκλησία του Αγίου Θεοδώρου — ο τρούλλος, η πλατεία, η καρδιά ούλλου του χωρκού. Περπάτα ως την Παναγία Ασταθκιώτισσα — εκκλησούι του 15ου αιώνα με τοιχογραφίες που αντέξαν πεντακόσια χρόνια. Ο Ελαιόμυλος — πέτρινα πιεστήρια, χρυσόν φως, μια ιστορία σε κάθε ρωγμή. Μεσημέρι στης Μαμάς — μοιράζεται συνταγές οικογενειακές, γενιών. Καφές στο Καφενείο με τους παππούδες τζιαι το τάβλι — τζιαι αν κάτσεις λλίο, εν να σου πουν ιστορίες που εν θα βρεις σε κανένα βιβλίο. Βράδυ στην «Η Καλή Ευτυχία» — «καλή ευτυχία» εν τζιαι μόνον τ' όνομα, εν τρόπος ζωής. Ύπνος στο Κονάτζι του Φλόκκα — αρχοντικό που σε βάλλει μέσα στην ιστορία.`
 };
 
 function openScript(scrollToId) {
